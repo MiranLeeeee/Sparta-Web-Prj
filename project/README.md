@@ -21,10 +21,10 @@ Don't worry (돈 걱정 돈 워리!) <br>
 </ul>
 <h4>Templates</h4>
 <ul>
-	<li>Layout<img src="https://ifh.cc/g/ZlntdH.jpg"></li>
+	<li>Layout <br><img src="https://ifh.cc/g/ZlntdH.jpg"></li>
 	<li>Main page, Elements: https://templated.co/projection</li>
 	<li>Subpage, Elements: https://www.w3schools.com/bootstrap/bootstrap_collapse.asp</li>
-	<li>Color Card <img src='https://ifh.cc/g/lETWhz.jpg'></li>
+	<li>Color Card <br><img src='https://ifh.cc/g/lETWhz.jpg'></li>
 </ul>
 <h4>Fonts</h4>
 <ul>
