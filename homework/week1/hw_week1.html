@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>나홀로 쇼핑몰</title>
+
+    <!-- CSS, fonts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .wrap {
+            font-family: 'Do Hyeon', sans-serif;
+            width: 600px;
+            margin: auto;
+        }
+
+        .productImg {
+            margin: auto;
+            background-image: url('https://i.ytimg.com/vi/-BsBkNF3oGU/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 600px;
+            height: 400px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            display: inline;
+        }
+
+        .input-group{
+            margin-bottom: 15px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            width: 100px;
+        }
+    </style>
+
+    <script>
+        function order() {
+            alert("주문이 완료되었습니다. ");
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="productImg"></div><br>
+    <div class="productInfo">
+        <h1>튤립꽃다발</h1><span>가격: 32000원/다발</span>
+        <p>특별한 날, 특별한 사람에게 선물하세요</p>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">주문자 이름</span>
+        </div>
+        <input type="text" class="form-control" id="username" placeholder="" required="">
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">수량</span>
+        </div>
+        <select class="form-control" id="orderNum" required="">
+            <option value="">수량을 선택해주세요.</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">주소</span>
+        </div>
+        <input type="text" class="form-control" id="address" placeholder="" required="">
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">전화번호</span>
+        </div>
+        <input type="text" class="form-control" id="tel" placeholder="010-1234-5678" required="">
+    </div>
+    <div class ="buttons">
+        <button class="btn btn-primary btn-lg btn-block" onclick="order();">주문하기</button>
+    </div>
+</div>
+</body>
+</html>
