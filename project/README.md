@@ -2,7 +2,7 @@
 <h2>Web project</h2>
 Series DDD 개발자 과정
 <h3>💰 Project </h3>
-Don't worry (돈 걱정 돈 워리!) <br>
+Don't worry Don worry (돈 걱정 돈 워리!) <br>
 : 저축상품인 정기예금상품과 적금상품의 정보를 알려주고 공유하는 시스템<br>
  <img src="https://img.shields.io/badge/python-v3.7-green" />
  <img src="https://img.shields.io/badge/MongoDB-v4.4.1-orange" />
