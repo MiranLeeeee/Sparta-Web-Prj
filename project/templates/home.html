@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="../static/assets/css/main.css"/>
 </head>
 <body>
+
+<!--navigation-->
 <header id="header">
     <div class="inner">
         <nav id="nav">
-            <!--아이디 버튼 넣을 것-->
+            <!--아이디 버튼 넣을 곳-->
         </nav>
         <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
     </div>
 </header>
-<section id="banner">
-    <!--inner에 이미지 삽입: 무료이미지 활용-->
+
+<!--main image-->
+<section id="banner" style="background-image: url('https://cdn.pixabay.com/photo/2013/07/18/10/56/packs-163497_1280.jpg'); z-index:1;">
     <div class="inner">
         <header>
             <h1>Don't worry Don worry!</h1>
@@ -28,6 +31,39 @@
         </footer>
     </div>
 </section>
+
+<!--wrapper: 서브페이지 이동-->
+<section id="three" class="wrapper align-center">
+    <div class="inner">
+        <div class="flex flex-2">
+            <article>
+                <div class="image round">
+                    <!--정기예금 이미지 필요-->
+                </div>
+                <header>
+                    <h3>정기예금</h3><br/>
+                </header>
+                <p>정기예금은 특정 기간동안 일정 금액을 예치하면 <br/>만기 후 이자를 받는 상품입니다. <br/><strong>정기예금 상품이 궁금하신가요?</strong></p>
+                <footer>
+                    <a href="javascript:showDeposit();" class="button">Learn More</a>
+                </footer>
+            </article>
+            <article>
+                <div class="image round">
+                    <!--적금 이미지 필요-->
+                </div>
+                <header>
+                    <h3>적금</h3><br/>
+                </header>
+                <p>적금은 특정기간동안 매월 특정금액을 일정하게 <br/> 입금하는 상품입니다. <br/><strong>적금 상품이 궁금하신가요?</strong></p>
+                <footer>
+                    <a href="javascript:showSavings();"  class="button">Learn More</a>
+                </footer>
+            </article>
+        </div>
+    </div>
+</section>
+
 <script src="../static/assets/js/jquery.min.js"></script>
 <script src="../static/assets/js/skel.min.js"></script>
 <script src="../static/assets/js/util.js"></script>
