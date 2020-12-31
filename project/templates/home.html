@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!--navigation-->
+<!-- Navigation -->
 <header id="header">
     <div class="inner">
         <nav id="nav">
@@ -18,7 +18,7 @@
     </div>
 </header>
 
-<!--main image-->
+<!-- Main image -->
 <section id="banner" style="background-image: url('https://cdn.pixabay.com/photo/2013/07/18/10/56/packs-163497_1280.jpg'); z-index:1;">
     <div class="inner">
         <header>
@@ -32,7 +32,7 @@
     </div>
 </section>
 
-<!--wrapper: 서브페이지 이동-->
+<!-- Wrapper: 서브페이지 이동 -->
 <section id="three" class="wrapper align-center">
     <div class="inner">
         <div class="flex flex-2">
@@ -64,7 +64,7 @@
     </div>
 </section>
 
-<!--footer: register form-->
+<!-- Footer: register form -->
 <footer id="footer">
     <div class="inner">
         <h3>Join</h3>
@@ -99,11 +99,38 @@
                 <input name="userPW" id="userPW" type="password">
             </div>
             <ul class="actions">
-                <li><input value="Join" class="button alt" type="button" onclick="join()"></li>
+                <li><input value="Join" class="button alt" type="button" onclick="join();"></li>
             </ul>
         </form>
     </div>
 </footer>
+
+<!-- Modal: 로그인 -->
+<div id="loginModal" class="hide modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <div class="field half first">
+                    <label for="userId">아이디</label>
+                    <input name="userId" id="loginId" type="text">
+                </div>
+                <div class="field half">
+                    <label for="userPW">패스워드</label>
+                    <input name="userPW" id="loginPW" type="password">
+                </div>
+            </div>
+            아직 돈워리 회원이 아니신가요? <a id="register" href="#footer" onclick="register();">회원가입바로가기</a>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="login();">Login</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../static/assets/js/jquery.min.js"></script>
