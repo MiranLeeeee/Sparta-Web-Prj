@@ -1,6 +1,17 @@
 //로그인을 위한 세션아이디 초기화
 let session_id = ""
 
+//home화면 로그인 활성화
+$(document).ready(function(){
+    if(session_id === "" || session_id === "?id=user"){
+        $('#loginBtn').css('display', 'inline')
+        $('#logoutBtn').css('display', 'none')
+    }else {
+        $('#loginBtn').css('display', 'none')
+        $('#logoutBtn').css('display', 'inline')
+    }
+})
+
 //회원가입
 function join() {
     let name = $('#name').val()
