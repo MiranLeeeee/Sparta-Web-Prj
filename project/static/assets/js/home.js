@@ -12,7 +12,8 @@ $(document).ready(function(){
     }
 })
 
-//회원가입
+/*회원가입*/
+//회원가입 메인 함수 (null check)
 function join() {
     let name = $('#name').val()
     let email = $('#email').val()
@@ -40,8 +41,26 @@ function join() {
         alert("비밀번호를 입력해주세요")
     }else {
         alert("회원가입을 축하합니다.")
-        //회원가입 insert 함수 추가
+        //회원정보삽입
     }
+}
+
+//이미 가입된 회원인지 확인
+function validUserId(id){
+    let validValue= -1
+    let countResult = -1
+    $.ajax({
+        type: "POST",
+        url: "/validUserId",
+        data: {
+            'id': id
+        },
+        async: false,
+        success: function(response){
+            countResult = response["countResult"]
+        }
+    })
+    return countResult
 }
 
 /*회원가입시 입력 값 정규표현식 검증*/
@@ -56,6 +75,7 @@ function isBirth(birthValue){
     let regBirth = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
     return regBirth.test(birthValue)
 }
+
 
 /*각 서브페이지로 이동*/
 //정기예금 페이지(deposit)로 이동
