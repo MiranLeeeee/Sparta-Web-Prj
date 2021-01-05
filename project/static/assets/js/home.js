@@ -41,7 +41,7 @@ function join() {
         alert("비밀번호를 입력해주세요")
     }else {
         alert("회원가입을 축하합니다.")
-        //회원정보삽입
+        insertMemberInfo(name, email, gender, birth, id, password)
     }
 }
 
@@ -61,6 +61,22 @@ function validUserId(id){
         }
     })
     return countResult
+}
+
+//회원 정보 삽입
+function insertMemberInfo(name, email, gender, birth, id, password){
+    $.ajax({
+        type: "POST",
+        url: "/insertMemberInfo",
+        data: {
+            'name': name,
+            'email': email,
+            'gender': gender,
+            'birth': birth,
+            'id': id,
+            'password': password
+        }
+     })
 }
 
 /*회원가입시 입력 값 정규표현식 검증*/
