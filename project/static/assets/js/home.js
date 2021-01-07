@@ -112,3 +112,8 @@ function showSavings() {
         location.href = "/savings?id="+session_id
     }
 }
+
+//회원가입으로 이동시 modal 변경
+function register() {
+    $('#loginModal').modal('hide')
+}
