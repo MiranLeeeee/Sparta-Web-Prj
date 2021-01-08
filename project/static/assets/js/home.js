@@ -92,6 +92,58 @@ function isBirth(birthValue){
     return regBirth.test(birthValue)
 }
 
+/*로그인*/
+//로그인정보와 회원정보 일치여부확인
+function login() {
+    let id = $('#loginId').val()
+    let password = $('#loginPW').val()
+
+    let validValue= -1
+    let countResult = -1
+    $.ajax({
+        type: "POST",
+        url: "/validUserId",
+        data: {
+            'id': id
+        },
+        async: false,
+        success: function(response){
+            countResult = response["countResult"]
+        }
+     })
+
+    //회원정보에 아이디가 존재여부에 따른 alert
+    if(countResult===1){
+        //해당 아이디의 비밀번호 일치여부확인
+        validValue = getPWCount(id, password)
+        if(validValue===1){
+            //로그인 성공시 실행할 함수넣을 것
+        }else {
+           alert("비밀번호를 제대로 입력해주세요.")
+        }
+    }else {
+        alert("아이디를 제대로 입력해주세요.")
+    }
+
+}
+
+//입력한 아이디의 비밀번호가 일치하는지 확인
+function getPWCount(id, password) {
+    let countResult = -1
+    $.ajax({
+        type: "POST",
+        url: "/validUserPW",
+        data: {
+            'id': id,
+            'password': password
+        },
+        async: false,
+        success: function(response){
+            countResult = response["countResult"]
+        }
+    })
+    return countResult
+}
 
 /*각 서브페이지로 이동*/
 //정기예금 페이지(deposit)로 이동
