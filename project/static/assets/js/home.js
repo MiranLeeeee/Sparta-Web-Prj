@@ -117,9 +117,9 @@ function login() {
         //해당 아이디의 비밀번호 일치여부확인
         validValue = getPWCount(id, password)
         if(validValue===1){
-            //로그인 성공시 실행할 함수넣을 것
+            loginToken(id, password)
         }else {
-           alert("비밀번호를 제대로 입력해주세요.")
+            alert("비밀번호를 제대로 입력해주세요.")
         }
     }else {
         alert("아이디를 제대로 입력해주세요.")
@@ -143,6 +143,15 @@ function getPWCount(id, password) {
         }
     })
     return countResult
+}
+
+//로그인 성공시 실행
+function loginToken(id, password){
+    session_id = id
+    alert(session_id+'님 환영합니다 👍')
+    $('#loginModal').modal('hide')
+    $('#loginBtn').css('display', 'none')
+    $('#logoutBtn').css('display', 'inline')
 }
 
 /*각 서브페이지로 이동*/
