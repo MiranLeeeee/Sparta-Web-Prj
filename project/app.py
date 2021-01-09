@@ -46,5 +46,16 @@ def insertMemberInfo():
 
     return jsonify({'result': 'success'})
 
+#입력한 아이디의 비밀번호가 일치하는지 확인
+@app.route('/validUserPW', methods=['POST'])
+def validUserPW():
+    userId = request.form['id']
+    userPW = request.form['password']
+
+    pw_hash = hashlib.sha256(userPW.encode('utf-8')).hexdigest()
+    result = db.member.find({'id': userId, 'password': pw_hash}).count()
+
+    return jsonify({'result': 'success', 'countResult': result})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
