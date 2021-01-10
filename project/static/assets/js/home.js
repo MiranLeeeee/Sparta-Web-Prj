@@ -154,6 +154,14 @@ function loginToken(id, password){
     $('#logoutBtn').css('display', 'inline')
 }
 
+//로그아웃
+function logout(){
+    alert("로그아웃 되셨습니다.")
+    $('#loginBtn').css('display', 'inline')
+    $('#logoutBtn').css('display', 'none')
+    location.href = "/"
+}
+
 /*각 서브페이지로 이동*/
 //정기예금 페이지(deposit)로 이동
 function showDeposit() {
