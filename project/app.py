@@ -1,8 +1,11 @@
+import requests
 from flask import Flask, render_template, jsonify, request
+from flask_cors import cross_origin
 from pymongo import MongoClient
 import hashlib
 
 app = Flask(__name__)
+#DB연결정보 추가
 client = MongoClient(your connection information)
 db = client.donworry
 
@@ -40,7 +43,7 @@ def insertMemberInfo():
     userId = request.form['id']
     userPW = request.form['password']
 
-    # 회원 비밀번호를 sha256 방법(단방향)으로 암호화
+    #회원 비밀번호를 sha256 방법(단방향)으로 암호화
     pw_hash = hashlib.sha256(userPW.encode('utf-8')).hexdigest()
     db.member.insert({"name": name, "email": email, "gender": gender, "birth": birth, "id": userId, "password": pw_hash});
 
@@ -62,6 +65,15 @@ def validUserPW():
 def getBankNames():
     result = list(db.banks.find({}, {'_id': 0}))
     return jsonify({'result': 'success', 'banks': result})
+
+#정기예금 정보 가져오기 (API)
+@app.route('/getDepositData', methods=['GET'])
+@cross_origin(origin='*')
+def getDepositData():
+    #API에서 발급받은 인증키 추가
+    url = 'http://finlife.fss.or.kr/finlifeapi/depositProductsSearch.json?auth=인증키'
+    res = requests.get(url)
+    return res.text
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
