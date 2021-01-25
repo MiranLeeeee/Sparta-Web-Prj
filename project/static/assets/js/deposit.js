@@ -1,5 +1,12 @@
 let session_id = ""
 session_id = decodeURI(location.href.substr(location.href.lastIndexOf('=') + 1))
+let dataList = []
+dataList = getProducts()
+
+$(document).ready(function(){
+    //전체 상품 보여주기
+    showAccordion(dataList[0], dataList[1], 1)
+}
 
 /*navigation*/
 //메인 페이지(Home)로 이동
@@ -71,3 +78,37 @@ function getProducts() {
     })
     return [baseList, optionList]
 }
+
+//전체 상품 보여주기 (시각화)
+function showAccordion(baseList, optionList, page){
+    let panelGroup = $('#accordion');
+    let htmlString = ""//금융상품 기본정보
+    let num = page * 10
+
+
+    panelGroup.empty()
+    //다시 수정할 것
+    if (page==6){
+        num = num-7
+    }
+    for (let i = num-10; i< num; i++){
+        htmlString = `<div class="panel panel-default datapanel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse${i+1}">
+                                    <div class='titleDiv'>
+                                        ${baseList[i]['fin_prdt_nm']}/ ${baseList[i]['kor_co_nm']}/ ${baseList[i]['join_member']}
+                                    </div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse${i+1}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                            </div>
+                        </div>
+				      </div>`;
+		panelGroup.append(htmlString);
+	}//for end
+}
+
+
