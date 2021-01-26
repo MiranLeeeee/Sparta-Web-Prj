@@ -126,3 +126,25 @@ function showAccordion(baseList, optionList, page){
 	}//for end
 }
 
+//은행 상세 정보 가져오기 (시각화)
+function getBankInfo(bankName) {
+    let htmlBank = ""
+    $.ajax({
+        type: "POST",
+        url: "/getBankInfo",
+        data: {
+            bankName: bankName
+        },
+        async: false,
+        success: function(response){
+            htmlBank = `<div>
+                            <header class="align-center"><img class="image round" style = "width: 250px;" src=${response['banks']['logo']}/></header>
+                            <h4>&#127970;은행정보</h4>
+                            은행명: ${response['banks']['name']}<br>
+                            전화번호: ${response['banks']['tel']}<br>
+                            웹사이트: <a href=${response['banks']['website']}> ${response['banks']['website']}</a>
+                        </div><br><br><h4>&#128181;상품정보</h4>`
+        }
+    })
+    return htmlBank
+}
