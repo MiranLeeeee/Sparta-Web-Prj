@@ -83,15 +83,16 @@ function getProducts() {
 function showAccordion(baseList, optionList, page){
     let panelGroup = $('#accordion');
     let htmlString = ""//금융상품 기본정보
+    let htmlBank = ""//금융회사 정보
+    let htmlProduct = ""//금융상품 상세정보
     let num = page * 10
 
-
     panelGroup.empty()
-    //다시 수정할 것
     if (page==6){
         num = num-7
     }
     for (let i = num-10; i< num; i++){
+        htmlBank= getBankInfo(baseList[i]['kor_co_nm'])
         htmlString = `<div class="panel panel-default datapanel">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -108,7 +109,20 @@ function showAccordion(baseList, optionList, page){
                         </div>
 				      </div>`;
 		panelGroup.append(htmlString);
+
+        htmlProduct = `<div>
+                        <b>상품이름:</b> ${baseList[i]['fin_prdt_nm']}<br>
+                        <b>가입대상:</b> ${baseList[i]['join_member']}<br>
+                        <b>가입방법:</b> ${baseList[i]['join_way']}<br>
+                        <b>만기후이자율:</b> ${baseList[i]['mtrt_int']}<br>
+                        <b>유의사항:</b> ${baseList[i]['etc_note']}
+                       </div><br><br>`
+
+        let collapseBody = '#collapse'+(i+1) +"> .panel-body"
+        //좋아요 정보 삽입할 것
+        $(collapseBody).append(htmlBank)
+        $(collapseBody).append(htmlProduct)
+
 	}//for end
 }
-
 
