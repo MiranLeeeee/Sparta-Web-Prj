@@ -85,12 +85,15 @@ function showAccordion(baseList, optionList, page){
     let htmlString = ""//금융상품 기본정보
     let htmlBank = ""//금융회사 정보
     let htmlProduct = ""//금융상품 상세정보
+    let dataString = ""//금리 정보
+    let htmlLike = ""//좋아요 정보
     let num = page * 10
 
     panelGroup.empty()
     if (page==6){
         num = num-7
     }
+
     for (let i = num-10; i< num; i++){
         htmlBank= getBankInfo(baseList[i]['kor_co_nm'])
         htmlString = `<div class="panel panel-default datapanel">
@@ -108,7 +111,7 @@ function showAccordion(baseList, optionList, page){
                             </div>
                         </div>
 				      </div>`;
-		panelGroup.append(htmlString);
+
 
         htmlProduct = `<div>
                         <b>상품이름:</b> ${baseList[i]['fin_prdt_nm']}<br>
@@ -118,12 +121,29 @@ function showAccordion(baseList, optionList, page){
                         <b>유의사항:</b> ${baseList[i]['etc_note']}
                        </div><br><br>`
 
+        htmlLike = `<div style="text-align: right;">
+                        <button class = 'likeBtn${i}' onClick="setLike(${i})">👍 좋아요: <p class="likeCount${i}">${likeCount}</p></button>
+                    </div>`
+
+
+        panelGroup.append(htmlString);
         let collapseBody = '#collapse'+(i+1) +"> .panel-body"
-        //좋아요 정보 삽입할 것
         $(collapseBody).append(htmlBank)
         $(collapseBody).append(htmlProduct)
+        $(collapseBody).append('<h4>&#128176;금리정보</h4>')
 
-	}//for end
+        for (let j = 0; j < optionList.length; j++){
+            if(baseList[i]['fin_prdt_cd']===optionList[j]['fin_prdt_cd']){
+                dataString = `<table width="150px">
+                <tr><th>저축금리유형</th><th>저축기간(개월)</th><th>저축금리<br>(소수점 둘째자리)</th><th>최고우대금리<br>(소수점 둘째자리)</th></tr>
+                <tr><td>${optionList[j]['intr_rate_type_nm']}</td><td>${optionList[j]['save_trm']}</td><td>${optionList[j]['intr_rate']}</td><td>${optionList[j]['intr_rate2']}</td></tr>`
+
+                $(collapseBody).append(dataString)
+
+            }//if end
+        }//for end j
+
+	}//for end i
 }
 
 //은행 상세 정보 가져오기 (시각화)
@@ -148,3 +168,4 @@ function getBankInfo(bankName) {
     })
     return htmlBank
 }
+
