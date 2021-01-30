@@ -153,7 +153,7 @@ function getBankInfo(bankName) {
         type: "POST",
         url: "/getBankInfo",
         data: {
-            bankName: bankName
+            'bankName': bankName
         },
         async: false,
         success: function(response){
@@ -180,7 +180,7 @@ function setLike(i){
         type: "POST",
         url: "/updateLike",
         data: {
-            'prd_nm' :prd_nm,
+            'prd_nm': prd_nm,
             'like': likeCount
         },
         async: false,
@@ -191,3 +191,20 @@ function setLike(i){
     })
 }
 
+//좋아요 정보 가져오기
+function getLike(prd_nm) {
+    let likeCount = -1;
+
+    $.ajax({
+          type: "POST",
+          url: "/getLike",
+          data: {
+            'prd_nm': prd_nm
+          },
+          async: false,
+          success: function(response){
+            likeCount = response['like']['like']
+          }
+    })
+    return likeCount
+}
