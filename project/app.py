@@ -83,5 +83,15 @@ def getLike():
     result = db.like.find_one({'name': prd_nm}, {'_id': 0})
     return jsonify({'result': 'success', 'like': result})
 
+#좋아요 수 지정(업데이트)
+@app.route('/updateLike', methods=['POST'])
+def updateLike():
+    prd_nm = request.form['prd_nm']
+    like = request.form['like']
+
+    db.like.update_one({'name': prd_nm}, {'$set': {'like': like}})
+    return jsonify({'result': 'success'})
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
