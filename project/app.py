@@ -75,5 +75,13 @@ def getDepositData():
     res = requests.get(url)
     return res.text
 
+#좋아요 정보 가져오기
+@app.route('/getLike', methods=['POST'])
+def getLike():
+    prd_nm = request.form['prd_nm']
+
+    result = db.like.find_one({'name': prd_nm}, {'_id': 0})
+    return jsonify({'result': 'success', 'like': result})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
