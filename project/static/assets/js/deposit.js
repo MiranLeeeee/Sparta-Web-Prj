@@ -377,3 +377,4 @@ function showPagination(baseList) {
 function showInfoByPage(page){
     showAccordion(dataList[0], dataList[1], page)
 }
+
