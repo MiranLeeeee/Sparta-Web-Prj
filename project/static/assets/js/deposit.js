@@ -362,7 +362,8 @@ function searchByBankName(){
     }//for end
 }
 
-//페이지네이션
+/*페이지네이션*/
+//시각화
 function showPagination(baseList) {
     let page = (baseList.length)/10;
     let htmlString = ""
@@ -370,4 +371,9 @@ function showPagination(baseList) {
         htmlString = `<li><a href="javascript:showInfoByPage(${i});">${i}</a></li>`
         $('.pagination').append(htmlString)
     }
+}
+
+//페이지 번호 클릭 시 정보 보여주기
+function showInfoByPage(page){
+    showAccordion(dataList[0], dataList[1], page)
 }
