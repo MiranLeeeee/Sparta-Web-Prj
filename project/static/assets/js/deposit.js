@@ -6,6 +6,8 @@ dataList = getProducts()
 $(document).ready(function(){
     //전체 상품 보여주기
     showAccordion(dataList[0], dataList[1], 1)
+    //페이지네이션
+    showPagination(dataList[0])
 }
 
 /*navigation*/
@@ -290,16 +292,15 @@ function searchProducts() {
 //금융회사로 검색
 function searchByBankName(){
     let search = $("#select_banks option:checked").text().replace("\n", "");
+    let panelGroup = $('#accordion');
     let includeBool = false;
     let baseList = dataList[0]
     let optionList = dataList[1]
-    let panelGroup = $('#accordion');
     let htmlString = ""
     let dataString = ""
     let htmlBank = ""
     let htmlProduct = ""
     panelGroup.empty()
-    $('.pagination').css('display','none')
 
     for (let i = 0; i< baseList.length; i++){
         includeBool = baseList[i]['kor_co_nm'].includes(search)
@@ -359,4 +360,14 @@ function searchByBankName(){
 
         }//if includeBool end
     }//for end
+}
+
+//페이지네이션
+function showPagination(baseList) {
+    let page = (baseList.length)/10;
+    let htmlString = ""
+    for (let i=1; i<page+1; i++){
+        htmlString = `<li><a href="javascript:showInfoByPage(${i});">${i}</a></li>`
+        $('.pagination').append(htmlString)
+    }
 }
