@@ -10,6 +10,8 @@ $(document).ready(function(){
     showPagination(dataList[0])
 }
 
+
+
 /*navigation*/
 //메인 페이지(Home)로 이동
 function showHome() {
@@ -28,6 +30,14 @@ function showSavings() {
         location.href = "/savings?id="+session_id
     }
 }
+
+//댓글공유 게시판(comment)으로 이동
+function showComment(i){
+    let prd_nm = dataList[0][i]['fin_prdt_nm']
+    location.href= '/comment?prd_nm='+prd_nm+'&&id='+session_id
+}
+
+
 
 //검색창 display
 function displaySearch(){
@@ -213,6 +223,8 @@ function getLike(prd_nm) {
     return likeCount
 }
 
+
+
 /*검색*/
 //시각화 중복되는 부분 함수로 나중에 따로 구현할 것
 //금융상품명으로 검색
@@ -361,6 +373,8 @@ function searchByBankName(){
         }//if includeBool end
     }//for end
 }
+
+
 
 /*페이지네이션*/
 //시각화
