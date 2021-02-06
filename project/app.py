@@ -92,6 +92,10 @@ def updateLike():
     db.like.update_one({'name': prd_nm}, {'$set': {'like': like}})
     return jsonify({'result': 'success'})
 
+#공유댓글 게시판 (comment)으로 이동
+@app.route('/comment')
+def comment():
+    return render_template('comment.html')
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
