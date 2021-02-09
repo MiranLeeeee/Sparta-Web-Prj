@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>About 적금</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<link rel="stylesheet" href="../static/assets/css/sub.css" />
+	<link rel="shortcut icon" href="#">
+</head>
+
+<body class="subpage">
+<header id="header">
+	<div class="inner">
+		<a href="#" class="logo">Don't worry Don worry!</a>
+		<nav id="nav">
+            <!--navigation 추가-->
+		</nav>
+		<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+	</div>
+</header>
+
+<section id="three" class="wrapper">
+	<div class="inner">
+		<header class="align-center">
+			<div class="image round">
+				<img src="../static/images/savings.png" style="width: 150px;" alt="적금" />
+			</div>
+			<h2>적금</h2>
+			<p>적금은 특정기간동안 매월 특정금액을 일정하게 입금하는 상품입니다.</p>
+		</header>
+		<div id="searches">
+			<select class="select_boxes" id="choiceMain" onchange="displaySearch();">
+				<option value="상품검색">상품검색</option>
+				<option value="은행검색">은행검색</option>
+			</select>
+			<div class="row uniform" id="queryDiv">
+				<div class="9u 12u$(small)">
+					<input type="text" name="query" id="query" value="" placeholder="상품키워드를 입력해주세요.">
+				</div>
+				<div class="3u$ 12u$(small)">
+					<input type="button" value="Search" id="searchBtn" onclick="searchProducts()">
+				</div>
+			</div>
+			<div id = "selectDiv" style="display: none;">
+				<select id="select_banks" onchange="searchByBankName();">
+				</select>
+			</div>
+		</div>
+		<br>
+		<div id="results" class="align-center">
+			<div class="panel-group" id="accordion">
+			</div><!--panel group end -->
+			<ul class="pagination">
+			</ul><!--pagination-->
+		</div><!--results end -->
+	</div><!--inner end -->
+</section>
+
+<!--savings.js 따로 생성할 것-->
+<script src="../static/assets/js/skel.min.js"></script>
+<script src="../static/assets/js/util.js"></script>
+<script src="../static/assets/js/main.js"></script>
+</body>
+</html>
