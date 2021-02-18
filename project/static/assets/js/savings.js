@@ -19,3 +19,16 @@ function showDeposit() {
     location.href = "/deposit?id="+session_id
     }
 }
+
+//검색창 display
+function displaySearch(){
+    let val = $("#choiceMain").val()
+    if (val==='상품검색'){
+        $('#queryDiv').css('display', 'inline')
+        $('#selectDiv').css('display', 'none')
+    }else {
+        $('#selectDiv').css('display', 'inline')
+        $('#queryDiv').css('display', 'none')
+        getBankNames()
+}
+
