@@ -32,3 +32,20 @@ function displaySearch(){
         getBankNames()
 }
 
+//은행 이름 가져오기
+function getBankNames(){
+    let htmlSelect = ""
+    $('#select_banks').empty()
+    $.ajax({
+        type: "GET",
+        url: "/getBankNames",
+        async: false,
+        success: function(response){
+            let arrayBanks = response["banks"]
+            for(let i=0;i<arrayBanks.length;i++){
+                htmlSelect = `<option>${arrayBanks[i]["name"]}</option>`
+                $('#select_banks').append(htmlSelect)
+            }//for end
+        }//success end
+    })//ajax end
+}
