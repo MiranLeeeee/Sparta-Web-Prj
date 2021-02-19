@@ -49,3 +49,23 @@ function getBankNames(){
         }//success end
     })//ajax end
 }
+
+//은행상품정보 데이터가져오기
+function getProducts() {
+    let jsonResult;
+    let baseList = [];
+	let optionList = [];
+
+    $.ajax({
+        type: "GET",
+        url: "/getSavingsData",
+        data: {},
+        async: false,
+        success: function(response){
+            jsonResult = JSON.parse(response);
+            baseList = jsonResult["result"]["baseList"];
+            optionList = jsonResult["result"]["optionList"];
+        }
+    })
+    return [baseList, optionList]
+}
