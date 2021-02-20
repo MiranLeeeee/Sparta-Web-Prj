@@ -75,6 +75,14 @@ def getDepositData():
     res = requests.get(url)
     return res.text
 
+#적금 정보 가져오기 (API)
+@app.route('/getSavingsData', methods=['GET'])
+@cross_origin(origin='*')
+def getSavingsData():
+    url = 'http://finlife.fss.or.kr/finlifeapi/savingProductsSearch.json??auth=인증키'
+    res = requests.get(url)
+    return res.text
+
 #좋아요 정보 가져오기
 @app.route('/getLike', methods=['POST'])
 def getLike():
