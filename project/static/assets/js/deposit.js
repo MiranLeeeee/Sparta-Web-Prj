@@ -239,7 +239,7 @@ function searchProducts() {
     let htmlBank = ""
     let htmlProduct = ""
     panelGroup.empty()
-    //페이징 작업 추가
+    $('.pagination').css('display','none')
 
     for (let i = 0; i< baseList.length; i++){
         includeBool = baseList[i]['fin_prdt_nm'].includes(search)
@@ -313,6 +313,7 @@ function searchByBankName(){
     let htmlBank = ""
     let htmlProduct = ""
     panelGroup.empty()
+    $('.pagination').css('display','none')
 
     for (let i = 0; i< baseList.length; i++){
         includeBool = baseList[i]['kor_co_nm'].includes(search)
