@@ -6,6 +6,8 @@ dataList = getProducts()
 $(document).ready(function(){
     //전체 상품 보여주기
     showAccordion(dataList[0], dataList[1], 1)
+    //페이지네이션
+    showPagination(dataList[0])
 }
 
 /*navigation*/
@@ -297,3 +299,13 @@ function searchByBankName(){
     }//for end
 }
 
+/*페이지네이션*/
+//시각화
+function showPagination(baseList) {
+    let page = (baseList.length)/10;
+    let htmlString = ""
+    for (let i=1; i<page+1; i++){
+        htmlString = `<li><a href="javascript:showInfoByPage(${i});">${i}</a></li>`
+        $('.pagination').append(htmlString)
+    }
+}
