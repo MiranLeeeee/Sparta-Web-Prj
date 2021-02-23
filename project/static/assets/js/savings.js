@@ -309,3 +309,8 @@ function showPagination(baseList) {
         $('.pagination').append(htmlString)
     }
 }
+
+//페이지 번호 클릭 시 정보 보여주기
+function showInfoByPage(page){
+    showAccordion(dataList[0], dataList[1], page)
+}
