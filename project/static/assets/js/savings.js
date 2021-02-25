@@ -322,6 +322,7 @@ function setLike(i){
     })
 }
 
+
 /*페이지네이션*/
 //시각화
 function showPagination(baseList) {
