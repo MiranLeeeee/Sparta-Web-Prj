@@ -10,6 +10,7 @@ $(document).ready(function(){
     showPagination(dataList[0])
 }
 
+
 /*navigation*/
 //메인 페이지(Home)로 이동
 function showHome() {
@@ -29,6 +30,7 @@ function showDeposit() {
     }
 }
 
+
 //검색창 display
 function displaySearch(){
     let val = $("#choiceMain").val()
@@ -40,6 +42,7 @@ function displaySearch(){
         $('#queryDiv').css('display', 'none')
         getBankNames()
 }
+
 
 //은행 이름 가져오기
 function getBankNames(){
@@ -127,6 +130,7 @@ function showAccordion(baseList, optionList, page){
 
 	}//for end i
 }
+
 
 //은행상품정보 데이터가져오기
 function getProducts() {
@@ -225,6 +229,7 @@ function searchProducts() {
     }//for end
 }
 
+
 //금융회사로 검색
 function searchByBankName(){
     let search = $("#select_banks option:checked").text().replace("\n", "");
@@ -299,6 +304,7 @@ function searchByBankName(){
     }//for end
 }
 
+
 /*금융상품 좋아요 서비스*/
 //좋아요 버튼 클릭 시 좋아요 수 지정
 function setLike(i){
@@ -320,6 +326,24 @@ function setLike(i){
             $('.likeCount'+i).text(likeCountText+1)
         }
     })
+}
+
+//좋아요 정보 가져오기
+function getLike(prd_nm) {
+    let likeCount = -1;
+
+    $.ajax({
+          type: "POST",
+          url: "/getLike",
+          data: {
+            'prd_nm': prd_nm
+          },
+          async: false,
+          success: function(response){
+            likeCount = response['like']['like']
+          }
+    })
+    return likeCount
 }
 
 
