@@ -299,6 +299,29 @@ function searchByBankName(){
     }//for end
 }
 
+/*금융상품 좋아요 서비스*/
+//좋아요 버튼 클릭 시 좋아요 수 지정
+function setLike(i){
+    let prd_nm = dataList[0][i]['fin_prdt_nm']
+    likeCount = getLike(prd_nm)
+    likeCount = parseInt(likeCount)
+    likeCount += 1
+
+     $.ajax({
+        type: "POST",
+        url: "/updateLike",
+        data: {
+            'prd_nm': prd_nm,
+            'like': likeCount
+        },
+        async: false,
+        success: function(response){
+            let likeCountText = parseInt($('.likeCount'+i).text())
+            $('.likeCount'+i).text(likeCountText+1)
+        }
+    })
+}
+
 /*페이지네이션*/
 //시각화
 function showPagination(baseList) {
