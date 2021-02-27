@@ -30,6 +30,11 @@ function showDeposit() {
     }
 }
 
+//댓글공유 게시판(comment)으로 이동
+function showComment(i){
+    let prd_nm = dataList[0][i]['fin_prdt_nm']
+    location.href= '/comment?prd_nm='+prd_nm+'&&id='+session_id
+}
 
 //검색창 display
 function displaySearch(){
