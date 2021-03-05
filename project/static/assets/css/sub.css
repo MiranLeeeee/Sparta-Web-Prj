@@ -1,0 +1,46 @@
+	@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&display=swap');
+
+	body {
+		font-family: 'Gothic A1', sans-serif;
+	}
+
+	#searches {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.select_boxes{
+		display: inline;
+		width: 20%;
+		margin-right: 10px;
+	}
+
+	#sortSelect {
+    	display: none;
+	}
+
+	select {
+		font-family: 'Gothic A1', sans-serif;
+		text-align-last: center;
+	}
+
+	#searchBtn {
+		text-align: center;
+	}
+
+	input::-webkit-input-placeholder {
+		font-family: 'Gothic A1', sans-serif;
+	}
+
+    .logoDiv {
+        width: 150px;
+        height: 150px;
+        border-radius: 70%;
+    }
+
+    .logoImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
