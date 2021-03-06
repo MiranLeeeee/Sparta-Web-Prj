@@ -1,0 +1,17 @@
+    @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&display=swap');
+
+    body {
+        font-family: 'Gothic A1', sans-serif;
+    }
+
+    strong {
+        color: black;
+    }
+
+    #commentTable {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
