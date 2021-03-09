@@ -14,3 +14,23 @@ $(document).ready(function(){
     $('#prd_nm').append(prd_nm)
 })
 
+function getName(session_id) {
+    let session_name = ""
+    if(session_id==='user'){
+        session_name = '로그인'
+    }else{
+         $.ajax({
+            type: "POST",
+            url: "/getName",
+            data: {
+                'session_id': session_id
+            },
+            async: false,
+            success: function (response) {
+                session_name = response['result']['name']
+            }
+        })
+    }
+
+     return session_name
+}
