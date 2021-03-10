@@ -12,8 +12,16 @@ $(document).ready(function(){
 
     $('#prd_nm').empty()
     $('#prd_nm').append(prd_nm)
+
+    if(session_name === '로그인'){
+        $('#form_comment').empty()
+        $('#form_comment').html("로그인이 필요한 서비스입니다.<br><br><input value='로그인하러가기' class='button alt' type='button' onClick='showLogin();'>")
+    }else {
+        $("#name").val(session_name)
+    }
 })
 
+//세션 이름 가져오기
 function getName(session_id) {
     let session_name = ""
     if(session_id==='user'){
@@ -33,4 +41,9 @@ function getName(session_id) {
     }
 
      return session_name
+}
+
+//메인 페이지로 이동 (로그인)
+function showLogin() {
+    location.href = "/"
 }
