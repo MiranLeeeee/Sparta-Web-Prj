@@ -70,3 +70,19 @@ function showCommentByProduct(prd_nm){
           }
     })
 }
+
+//공유댓글 삭제
+function deleteComment(i) {
+
+    if(prd_nm.indexOf(' ') != -1) {
+        replaced_prd_nm = prd_nm.replace(' ', '')
+    }else{
+        replaced_prd_nm = prd_nm
+    }
+    replaced_prd_nm = prd_nm.replace(' ', '')
+    password = window.prompt('비밀번호를 입력해주세요.');
+
+    name = $('.'+replaced_prd_nm+i).children().eq(1).text()
+    comment = $('.'+replaced_prd_nm+i).children().eq(2).text()
+
+}
