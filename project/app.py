@@ -113,5 +113,12 @@ def getName():
     result = db.member.find_one({'id': sessionId}, {'_id': 0})
     return jsonify({'result': result})
 
+#공유 댓글 가져오기
+@app.route('/showComments', methods=['POST'])
+def showComments():
+    prd_nm = request.form['prd_nm']
+    result = list(db.comment.find({'prd_nm': prd_nm}, {'_id': 0}))
+    return jsonify({'result': result})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
