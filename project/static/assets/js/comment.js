@@ -19,6 +19,8 @@ $(document).ready(function(){
     }else {
         $("#name").val(session_name)
     }
+
+    showCommentByProduct(prd_nm);
 })
 
 //세션 이름 가져오기
@@ -46,4 +48,25 @@ function getName(session_id) {
 //메인 페이지로 이동 (로그인)
 function showLogin() {
     location.href = "/"
+}
+
+//금융상품에 대한 공유댓글 시각화
+function showCommentByProduct(prd_nm){
+    $.ajax({
+        type: "POST",
+         url: "/showComments",
+          data: {
+            'prd_nm': prd_nm
+          },
+          async: false,
+          success: function(response){ // 서버에서 준 결과를 response라는 변수에 담음
+            let results = response['result']
+            for (let i=0; i<results.length; i++){
+                let cls = (prd_nm+(i+1)).replace(' ', '')
+                $('#commentTable').append(`
+                    <tr class=${cls}><td>${i+1}</td><td>${results[i]['name']}</td><td>${results[i]['comment']}</td><td><button onClick="deleteComment(${i+1});">삭제</button></td></tr>
+                `)
+            }
+          }
+    })
 }
