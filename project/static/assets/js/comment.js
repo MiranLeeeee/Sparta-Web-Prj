@@ -73,6 +73,7 @@ function showCommentByProduct(prd_nm){
 
 //공유댓글 삭제
 function deleteComment(i) {
+    let commentCount = -1
 
     if(prd_nm.indexOf(' ') != -1) {
         replaced_prd_nm = prd_nm.replace(' ', '')
@@ -84,5 +85,7 @@ function deleteComment(i) {
 
     name = $('.'+replaced_prd_nm+i).children().eq(1).text()
     comment = $('.'+replaced_prd_nm+i).children().eq(2).text()
+
+    commentCount = checkComment(i, password)
 
 }
