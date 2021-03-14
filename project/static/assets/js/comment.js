@@ -59,7 +59,7 @@ function showCommentByProduct(prd_nm){
             'prd_nm': prd_nm
           },
           async: false,
-          success: function(response){ // 서버에서 준 결과를 response라는 변수에 담음
+          success: function(response){
             let results = response['result']
             for (let i=0; i<results.length; i++){
                 let cls = (prd_nm+(i+1)).replace(' ', '')
@@ -88,4 +88,35 @@ function deleteComment(i) {
 
     commentCount = checkComment(i, password)
 
+}
+
+//공유댓글 찾기
+function checkComment(i, password) {
+    let commentCount = -1
+
+    if(prd_nm.indexOf(' ') != -1) {
+        replaced_prd_nm = prd_nm.replace(' ', '')
+    }else{
+        replaced_prd_nm = prd_nm
+    }
+
+    name = $('.'+replaced_prd_nm+i).children().eq(1).text()
+    comment = $('.'+replaced_prd_nm+i).children().eq(2).text()
+
+        $.ajax({
+        type: "POST",
+         url: "/checkComment",
+          data: {
+            'prd_nm': prd_nm,
+            'name' : name,
+            'password': password,
+            'comment': comment
+          },
+          async: false,
+          success: function(response){
+            commentCount = response['commentCount']
+            console.log(commentCount)
+          }
+    })
+    return commentCount
 }
