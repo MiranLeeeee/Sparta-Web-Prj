@@ -120,5 +120,18 @@ def showComments():
     result = list(db.comment.find({'prd_nm': prd_nm}, {'_id': 0}))
     return jsonify({'result': result})
 
+#공유 댓글 찾기(개수)
+@app.route('/checkComment', methods=['POST'])
+def checkComment():
+
+    prd_nm = request.form['prd_nm']
+    name = request.form['name']
+    password = request.form['password']
+    comments = request.form['comment']
+    pw_hash = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    commentCount = db.comment.find({'prd_nm': prd_nm, 'name': name, 'password': pw_hash, 'comment': comments}).count()
+
+    return jsonify({'result': 'success', 'commentCount': commentCount})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
