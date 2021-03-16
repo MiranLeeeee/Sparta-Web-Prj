@@ -88,6 +88,28 @@ function deleteComment(i) {
 
     commentCount = checkComment(i, password)
 
+    if (commentCount<1){
+        alert("비밀번호가 잘못되었습니다. 다시 확인해주세요.")
+        location.reload()
+    } else{
+        $.ajax({
+        type: "POST",
+         url: "/deleteComment",
+          data: {
+            'prd_nm': prd_nm,
+            'name': name,
+            'password': password,
+            'comment': comment
+          },
+          async: false,
+          success: function(response){ // 서버에서 준 결과를 response라는 변수에 담음
+            alert("삭제 되었습니다.")
+            location.reload()
+          }
+        })
+    }
+
+
 }
 
 //공유댓글 찾기
