@@ -133,6 +133,7 @@ def checkComment():
 
     return jsonify({'result': 'success', 'commentCount': commentCount})
 
+#공유 댓글 삭제
 @app.route('/deleteComment', methods=['POST'])
 def deleteComment():
 
@@ -145,5 +146,17 @@ def deleteComment():
 
     return jsonify({'result': 'success'})
 
+#공유 댓글 저장
+@app.route('/insertComment', methods=['POST'])
+def insertComment():
+
+    prd_nm = request.form['prd_nm']
+    name = request.form['name']
+    password = request.form['password']
+    comments = request.form['comment']
+    pw_hash = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+    db.comment.insert({"prd_nm": prd_nm, "name": name, "password": pw_hash, "comment": comments});
+    return jsonify({'result': 'success'})
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
