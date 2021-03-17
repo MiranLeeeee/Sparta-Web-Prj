@@ -142,3 +142,26 @@ function checkComment(i, password) {
     })
     return commentCount
 }
+
+//공유 댓글 저장
+function insertComment() {
+    let name = $('#name').val()
+    let password = $('#password').val()
+    let comment = $('#comment').val()
+    let prd_nm = $('#prd_nm').text()
+
+    $.ajax({
+        type: "POST",
+         url: "/insertComment",
+          data: {
+            'prd_nm': prd_nm,
+            'name' : name,
+            'password': password,
+            'comment': comment
+          },
+          async: false,
+          success: function(response){
+            location.reload()
+          }
+    })
+}
