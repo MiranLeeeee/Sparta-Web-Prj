@@ -83,6 +83,15 @@ def getSavingsData():
     res = requests.get(url)
     return res.text
 
+#좋아요 정보 초기화
+@app.route('/setLike', methods=['POST'])
+def setLike():
+    prd_nm = request.form['prd_nm']
+    like = request.form['like']
+
+    db.like.insert({"name": prd_nm, "like": like});
+    return jsonify({'result': 'success'})
+
 #좋아요 정보 가져오기
 @app.route('/getLike', methods=['POST'])
 def getLike():
