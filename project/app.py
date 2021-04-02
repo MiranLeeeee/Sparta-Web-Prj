@@ -167,5 +167,7 @@ def insertComment():
 
     db.comment.insert({"prd_nm": prd_nm, "name": name, "password": pw_hash, "comment": comments});
     return jsonify({'result': 'success'})
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
